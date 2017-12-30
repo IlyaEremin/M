@@ -1,0 +1,23 @@
+ext {
+    versions = [
+            okHttp              : '3.3.1',
+            support             : '27.0.1',
+            retrofit            : '2.0.2',
+            permissionDispatcher: '3.1.0',
+            BUILD_TOOLS_VERSION : '26.0.2',
+            MIN_SDK_VERSION     : 14,
+            TARGET_SDK_VERSION  : 26
+    ]
+    supportDeps = [
+            appcompatV7 : "com.android.support:appcompat-v7:$versions.support",
+            recyclerView: "com.android.support:recyclerview-v7:$versions.support",
+            design      : "com.android.support:design:$versions.support"
+    ]
+    rxJava = [
+            rxJava   : 'io.reactivex:rxjava:1.1.6',
+            rxAndroid: 'io.reactivex:rxandroid:1.2.1'
+    ]
+
+    supportLibs = supportDeps.values()
+    rxJavaLibs = rxJava.values()
+}
