@@ -23,7 +23,7 @@ public class Contacts {
         if (!cache.containsKey(phoneNumber)) {
             Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
             String[] projection = new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME};
-            String contactName = "";
+            String contactName = null;
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             if (cursor != null) {
                 if (cursor.moveToFirst()) {

@@ -25,7 +25,7 @@ public class ListsTest {
         testList.add(new TestClass("9", "kykyky"));
 
         Pair<List<TestClass>, List<TestClass>> listListPair =
-                Lists.groupBy(testList, testClass -> testClass.id.compareTo("5") < 0);
+                Lists.splitOnPair(testList, testClass -> testClass.id.compareTo("5") < 0);
 
         Assert.assertEquals(2, listListPair.first.size());
         Assert.assertEquals(3, listListPair.second.size());

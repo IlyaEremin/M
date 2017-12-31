@@ -60,15 +60,14 @@ public class MessageInteractorTest {
 
         Context mockContext = mock(Context.class);
         MessageInteractor messageInteractor = spy(new MessageInteractor(mockContext, mockContacts));
-        doReturn(expectedInbox).when(messageInteractor).getInbox();
+        doReturn(expectedInbox).when(messageInteractor).retrieveMessages();
 
         // Act
         List<Dialog> actualDialogs = messageInteractor.getMessages();
 
         // Assert
         assertThat(actualDialogs).isEqualTo(expectedDialogs);
-        verify(messageInteractor).getInbox();
-        verify(messageInteractor).getSent();
+        verify(messageInteractor).retrieveMessages();
     }
 
     @Test
@@ -93,7 +92,7 @@ public class MessageInteractorTest {
         doReturn(mockContentResolver).when(mockContext).getContentResolver();
 
         // Act
-        List<Message> actualInboxMessages = messageInteractor.getInbox();
+        List<Message> actualInboxMessages = messageInteractor.retrieveMessages();
 
         // Assert
         assertThat(actualInboxMessages).isEqualTo(expectedInboxMessages);

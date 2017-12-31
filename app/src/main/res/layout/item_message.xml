@@ -27,7 +27,10 @@
         android:layout_marginTop="17.5dp"
         android:textColor="#4d83b3"
         android:textStyle="bold"
-        tools:text="Ilya"
+        tools:text="Ilya. My second name is Eremin. I'm professional engineer"
+        android:layout_marginRight="80dp"
+        android:ellipsize="end"
+        android:lines="1"
         />
 
     <TextView
@@ -35,9 +38,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="72dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="40dp"
         android:textColor="#8f8f8f"
-        tools:text="Message text :)"
+        tools:text="Hello. My name is Lil Dicky. I have appointment today:)"
+        android:ellipsize="end"
+        android:lines="1"
         />
 
     <TextView

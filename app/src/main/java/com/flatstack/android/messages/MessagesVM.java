@@ -21,11 +21,11 @@ public class MessagesVM extends ViewModel {
         this.messageInteractor = messageInteractor;
     }
 
-    public MessageInteractor getMessageInteractor() {
+    MessageInteractor getMessageInteractor() {
         return messageInteractor;
     }
 
-    public void attach() {
+    void attach() {
         showProgress.postValue(true);
         messages.postValue(messageInteractor.getMessages());
     }

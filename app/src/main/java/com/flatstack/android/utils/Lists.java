@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.Pair;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import rx.functions.Action1;
@@ -63,11 +65,11 @@ public class Lists {
     }
 
     /**
-     * @return Pair of two lists. First list contains values which satisfy groupBy
+     * @return Pair of two lists. First list contains values which satisfy splitOnPair
      * i.e. condition.call(item) returns true. Second list contains rest of items from #list.
      */
-    public static <T> Pair<List<T>, List<T>> groupBy(@NonNull List<T> list,
-                                                     @NonNull Func1<T, Boolean> condition) {
+    public static <T> Pair<List<T>, List<T>> splitOnPair(@NonNull List<T> list,
+                                                         @NonNull Func1<T, Boolean> condition) {
         List<T> list1 = new ArrayList<>();
         List<T> list2 = new ArrayList<>();
         for (T item : list) {
@@ -78,6 +80,21 @@ public class Lists {
             }
         }
         return new Pair<>(list1, list2);
+    }
+
+    public static <K, V> Map<K, List<V>> groupBy(List<V> list, Func1<V, K> condition) {
+        Map<K, List<V>> map = new HashMap<>();
+        for (V item : list) {
+            K key = condition.call(item);
+            if (!map.containsKey(key)) {
+                List<V> _list = new ArrayList<>();
+                _list.add(item);
+                map.put(key, _list);
+            } else {
+                map.get(key).add(item);
+            }
+        }
+        return map;
     }
 
     public static <I, O> List<O> map(@NonNull List<I> input, @NonNull Func1<I, O> mapper) {
